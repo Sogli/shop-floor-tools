@@ -72,16 +72,6 @@ cd android/metraza
 ./gradlew assembleDebug
 ```
 
-## Šta ovo pokazuje
-
-- Prevođenje znanja iz struke u eksplicitne modele i ograničenja.
-- Razvoj za čoveka koji obavlja posao: srpska terminologija i brz unos.
-- Put od malih prototipova do održivih Android aplikacija.
-- Validacija, objašnjivost i regresioni testovi kao deo funkcionalnosti, a ne dodatak.
-- Korišćenje AI agenata kao saradnika, uz proveru rezultata na stvarnim proizvodnim slučajevima.
-
-Formule i primeri u ovom javnom portfoliju su generički ili sanirani. Nisu objava vlasničke procesne dokumentacije.
-
 ---
 
 # 🇬🇧 English
@@ -151,13 +141,3 @@ cd android/metraza
 ./gradlew testDebugUnitTest
 ./gradlew assembleDebug
 ```
-
-## What this demonstrates
-
-- Translating domain knowledge into explicit models and constraints.
-- Building for the person performing the work, including Serbian terminology and fast input flows.
-- Moving from small prototypes to maintainable Android applications.
-- Treating validation, explainability and regression tests as part of the feature.
-- Using AI coding agents as collaborators while verifying output against real operational cases.
-
-The formulas and examples in this public portfolio are generic or sanitized. They are not a release of proprietary process documentation.
