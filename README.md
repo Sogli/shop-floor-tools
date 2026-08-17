@@ -1,12 +1,114 @@
-# Shop-floor tools - software built from hands-on production work
+# Shop-floor tools — softver nastao iz proizvodnje / software built from hands-on production work
 
 [![Portfolio CI](https://github.com/Sogli/shop-floor-tools/actions/workflows/portfolio-ci.yml/badge.svg)](https://github.com/Sogli/shop-floor-tools/actions/workflows/portfolio-ci.yml)
 
+---
+
+# 🇷🇸 Srpski
+
+Radim neposredno na mašinama za obradu i doradu bakra. Ponavljajuća podešavanja, ručne konverzije i praćenje proizvodnje trošili su vreme i ostavljali prostor za greške, pa sam napravio alate koje sam želeo da imam u pogonu.
+
+Ovaj repozitorijum je rezultat: zbirka praktičnih Python i Android aplikacija koje svakodnevni rad čine bržim, doslednijim i lakšim za proveru. Ujedno je i najjasniji primer kako pristupam inženjerstvu — krenem od stvarnog problema, modelujem ograničenja, isporučim nešto upotrebljivo, pa to popravljam kroz povratne informacije i granične slučajeve.
+
+Repozitorijum ne sadrži proizvodne zapise, podatke o zaposlenima, dokumenta firme, kredencijale ni ključeve za potpisivanje.
+
+## Spisak programa
+
+### Python
+
+| Program | Čemu služi |
+|---|---|
+| `python/cutting-optimizer` | Optimizuje podešavanje rezanja i uzdužnog sečenja trake — bira raspored noževa i odstojnika uz poštovanje raspoloživog alata. |
+
+### Android
+
+| Program | Čemu služi |
+|---|---|
+| `android/metraza` | Računa dužinu i metražu koluta iz dimenzija i materijala. |
+| `android/kilaza` | Pretvara dimenzije koluta u masu i grupiše ih po porudžbinama. |
+| `android/coil-diameter` | Procenjuje spoljni prečnik koluta iz unutrašnjeg prečnika, dužine i debljine. |
+| `android/pallet-packing` | Raspoređuje kolutove po paletama po zadatom broju komada. |
+| `android/pallet-weight-packing` | Pakuje palete do ciljne mase, uz različite materijale i gustine. |
+| `android/equipment-tracking` | Vodi evidenciju zaduženog alata i opreme — rokovi, istorija i dostupnost. |
+| `android/livnica-shifts` | Rani prototip za smene, praznike i obračun zarade (istorijski, prethodnik projekta `shift-payroll-android`). |
+
+## Izdvojeni projekat: optimizator rezanja
+
+`python/cutting-optimizer/m39.py` je terminalna aplikacija za optimizaciju podešavanja rezanja i uzdužnog sečenja.
+
+- Modeluje ograničenja zaliha noževa, odstojnika, osovina i guma.
+- Koristi mešovito celobrojno linearno programiranje kroz PuLP i HiGHS.
+- Traži rezervne strategije uz očuvanje konzistentnosti zaliha.
+- Koristi `Decimal` kvantizaciju za fizičke dimenzije.
+- Razbija simetrične prostore rešenja da bi skratio rad solvera; referentni scenario je pao sa oko 39 na oko 21 sekundu bez promene izabranog podešavanja.
+- Ispisuje objašnjenje na srpskom, razumljivo operateru: izabrani raspored, rezervne varijante i korekcije balansa.
+
+```mermaid
+flowchart LR
+    A["Dimenzije i raspoloživ alat"] --> B["Validacija i kvantizacija"]
+    B --> C["Izgradnja MILP modela"]
+    C --> D["HiGHS solver"]
+    D --> E["Provera fizičke izvodljivosti"]
+    E --> F["Balansiran raspored rezanja"]
+    F --> G["Rezultat čitljiv operateru"]
+```
+
+Pokretanje:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r python/cutting-optimizer/requirements.txt
+python python/cutting-optimizer/m39.py
+```
+
+Svaki Android folder je nezavisan Android Studio projekat sa sopstvenim Gradle wrapper-om:
+
+```bash
+cd android/metraza
+./gradlew testDebugUnitTest
+./gradlew assembleDebug
+```
+
+## Šta ovo pokazuje
+
+- Prevođenje znanja iz struke u eksplicitne modele i ograničenja.
+- Razvoj za čoveka koji obavlja posao — srpska terminologija i brz unos.
+- Put od malih prototipova do održivih Android aplikacija.
+- Validacija, objašnjivost i regresioni testovi kao deo funkcionalnosti, a ne dodatak.
+- Korišćenje AI agenata kao saradnika, uz proveru rezultata na stvarnim proizvodnim slučajevima.
+
+Formule i primeri u ovom javnom portfoliju su generički ili sanirani. Nisu objava vlasničke procesne dokumentacije.
+
+---
+
+# 🇬🇧 English
+
 I work hands-on with copper-processing and finishing machinery. Repetitive setup calculations, handwritten conversions and operational tracking created avoidable time loss and room for error, so I built the tools I wanted to have on the shop floor.
 
-This repository is the result: a collection of practical Python and Android applications created to make daily production work faster, more consistent and easier to verify. It is also the clearest example of how I approach engineering - start from a real problem, model the constraints, ship something usable, then improve it from feedback and edge cases.
+This repository is the result: a collection of practical Python and Android applications created to make daily production work faster, more consistent and easier to verify. It is also the clearest example of how I approach engineering — start from a real problem, model the constraints, ship something usable, then improve it from feedback and edge cases.
 
 No production records, employee data, company documents, credentials or signing keys are included.
+
+## Program list
+
+### Python
+
+| Program | What it does |
+|---|---|
+| `python/cutting-optimizer` | Optimizes cutting and slitting setups — picks the knife and spacer arrangement that fits the available tooling. |
+
+### Android
+
+| Program | What it does |
+|---|---|
+| `android/metraza` | Calculates coil length and running metres from dimensions and material. |
+| `android/kilaza` | Converts coil dimensions into mass and groups them by order. |
+| `android/coil-diameter` | Estimates external coil diameter from inner diameter, length and thickness. |
+| `android/pallet-packing` | Distributes coils across pallets by piece count. |
+| `android/pallet-weight-packing` | Packs pallets to a target mass across materials with different densities. |
+| `android/equipment-tracking` | Tracks issued tools and equipment — deadlines, history and availability. |
+| `android/livnica-shifts` | Early prototype for shift cycles, holidays and pay calculation (historical predecessor of `shift-payroll-android`). |
 
 ## Featured project: cutting setup optimizer
 
@@ -38,19 +140,7 @@ pip install -r python/cutting-optimizer/requirements.txt
 python python/cutting-optimizer/m39.py
 ```
 
-## Android tools
-
-| Project | Problem it removes | Engineering focus |
-|---|---|---|
-| `android/metraza` | Repeated coil length, roll and material calculations | Compose UI, isolated calculation/validation layer, unit and UI tests |
-| `android/kilaza` | Converting coil dimensions between length, mass and grouped orders | Typed models, decimal-input handling, saved UI state, regression tests |
-| `android/coil-diameter` | Estimating external coil diameter from inner diameter, length and thickness | Focused calculator, responsive Compose interface |
-| `android/pallet-packing` | Distributing coils across pallets | Input validation, deterministic allocation, XML/AppCompat UI |
-| `android/pallet-weight-packing` | Packing against target pallet mass across multiple materials | Density-aware calculations and target-weight allocation |
-| `android/equipment-tracking` | Tracking issued items, deadlines, history and availability | Room, JSON migration, notifications, Google Drive backup |
-| `android/livnica-shifts` | Early prototype for shift cycles, holidays and repeated pay calculations | Historical prototype retained to show the path toward the separately published `shift-payroll-android` project |
-
-Each folder is an independent Android Studio project with its own Gradle wrapper. For example:
+Each Android folder is an independent Android Studio project with its own Gradle wrapper:
 
 ```bash
 cd android/metraza
