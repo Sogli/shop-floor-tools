@@ -49,23 +49,6 @@ flowchart LR
     E --> F["Uputstvo za operatera"]
 ```
 
-Pokretanje:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r python/cutting-optimizer/requirements.txt
-python python/cutting-optimizer/m39.py
-```
-
-Svaki Android folder je nezavisan Android Studio projekat sa sopstvenim Gradle wrapper-om:
-
-```bash
-cd android/metraza
-./gradlew testDebugUnitTest
-./gradlew assembleDebug
-```
-
 ---
 
 # 🇬🇧 English
@@ -111,21 +94,4 @@ flowchart LR
     C --> D["Check it fits the machine"]
     D --> E["Knife arrangement"]
     E --> F["Instructions for the operator"]
-```
-
-Run it with:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r python/cutting-optimizer/requirements.txt
-python python/cutting-optimizer/m39.py
-```
-
-Each Android folder is an independent Android Studio project with its own Gradle wrapper:
-
-```bash
-cd android/metraza
-./gradlew testDebugUnitTest
-./gradlew assembleDebug
 ```
