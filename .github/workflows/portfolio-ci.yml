@@ -22,7 +22,6 @@ jobs:
         project:
           - android/metraza
           - android/kilaza
-          - android/livnica-shifts
           - android/equipment-tracking/android
     defaults:
       run:
@@ -37,4 +36,3 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
       - run: chmod +x gradlew
       - run: ./gradlew testDebugUnitTest --stacktrace
-

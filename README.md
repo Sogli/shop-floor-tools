@@ -48,7 +48,7 @@ python python/cutting-optimizer/m39.py
 | `android/pallet-packing` | Distributing coils across pallets | Input validation, deterministic allocation, XML/AppCompat UI |
 | `android/pallet-weight-packing` | Packing against target pallet mass across multiple materials | Density-aware calculations and target-weight allocation |
 | `android/equipment-tracking` | Tracking issued items, deadlines, history and availability | Room, JSON migration, notifications, Google Drive backup |
-| `android/livnica-shifts` | Shift cycles, holidays and repeated pay calculations | Scheduling, persistence, payroll rules, tests and Detekt |
+| `android/livnica-shifts` | Early prototype for shift cycles, holidays and repeated pay calculations | Historical prototype retained to show the path toward the separately published `shift-payroll-android` project |
 
 Each folder is an independent Android Studio project with its own Gradle wrapper. For example:
 
@@ -67,4 +67,3 @@ cd android/metraza
 - Using AI coding agents as collaborators while verifying output against real operational cases.
 
 The formulas and examples in this public portfolio are generic or sanitized. They are not a release of proprietary process documentation.
-
