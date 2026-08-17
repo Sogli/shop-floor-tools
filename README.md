@@ -6,10 +6,6 @@
 
 # 🇷🇸 Srpski
 
-Radim neposredno na mašinama za obradu i doradu bakra. Ponavljajuća podešavanja, ručne konverzije i praćenje proizvodnje trošili su vreme i ostavljali prostor za greške, pa sam napravio alate koje sam želeo da imam u pogonu.
-
-Ovaj repozitorijum je rezultat: zbirka praktičnih Python i Android aplikacija koje svakodnevni rad čine bržim, doslednijim i lakšim za proveru. Ujedno je i najjasniji primer kako pristupam inženjerstvu: krenem od stvarnog problema, modelujem ograničenja, isporučim nešto upotrebljivo, pa to popravljam kroz povratne informacije i granične slučajeve.
-
 ## Spisak programa
 
 ### Python
@@ -73,10 +69,6 @@ cd android/metraza
 ---
 
 # 🇬🇧 English
-
-I work hands-on with copper-processing and finishing machinery. Repetitive setup calculations, handwritten conversions and operational tracking created avoidable time loss and room for error, so I built the tools I wanted to have on the shop floor.
-
-This repository is the result: a collection of practical Python and Android applications created to make daily production work faster, more consistent and easier to verify. It is also the clearest example of how I approach engineering: start from a real problem, model the constraints, ship something usable, then improve it from feedback and edge cases.
 
 ## Program list
 
