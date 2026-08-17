@@ -6,6 +6,8 @@
 
 # 🇷🇸 Srpski
 
+Alati koje sam napravio za sopstveni rad u pogonu za obradu bakra.
+
 ## Spisak programa
 
 ### Python
@@ -52,6 +54,8 @@ flowchart LR
 ---
 
 # 🇬🇧 English
+
+Tools I built for my own work in a copper-processing plant.
 
 ## Program list
 
