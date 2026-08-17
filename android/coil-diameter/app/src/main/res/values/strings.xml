@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Prečnik</string>
+    <string name="app_title">Računanje prečnika</string>
+    <string name="params">Parametri</string>
+    <string name="core_diameter_label">Unutrašnji prečnik doboša (mm)</string>
+    <string name="length_label">Metraža (m)</string>
+    <string name="thickness_label">Debljina materijala (mm)</string>
+    <string name="calculate">Izračunaj</string>
+    <string name="outer_diameter">Spoljašnji prečnik</string>
+    <string name="result_unit">mm</string>
+    <string name="hint_core">npr. 400</string>
+    <string name="hint_length">npr. 200</string>
+    <string name="hint_thickness">npr. 1,5</string>
+    <string name="result_placeholder">-</string>
+
+    <string name="field_core_diameter">Unutrašnji prečnik</string>
+    <string name="field_length">Metraža</string>
+    <string name="field_thickness">Debljina materijala</string>
+    <string name="validation_required">%1$s je obavezno polje.</string>
+    <string name="validation_numeric">%1$s mora biti numerička vrednost.</string>
+    <string name="validation_positive">%1$s mora biti pozitivna vrednost.</string>
+    <string name="message_success">Proračun je uspešno završen.</string>
+    <string name="message_error_prefix">Greška: %1$s</string>
+</resources>

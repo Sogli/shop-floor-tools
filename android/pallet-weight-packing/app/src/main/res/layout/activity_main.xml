@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_large">
+
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/logo"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_large" />
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/title"
+            android:textAppearance="@style/TextAppearance.App.AutoSize.Large"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/spacing_large" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/palletCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_large"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:strokeColor="@color/primary"
+            app:strokeWidth="@dimen/card_stroke_width"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_large">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/params_pallet"
+                    android:textAppearance="@style/TextAppearance.App.Title"
+                    android:textColor="@color/accent"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/spacing_medium" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/recommended_pallet_label"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_secondary" />
+
+                <TextView
+                    android:id="@+id/recommendedPalletText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/recommended_pallet_empty"
+                    android:textAppearance="@style/TextAppearance.App.Body"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="@dimen/spacing_medium" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@string/manual_pallet_size"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_secondary" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    app:boxBackgroundColor="@color/surface_light"
+                    app:boxStrokeColor="@color/accent"
+                    app:boxStrokeWidth="@dimen/card_stroke_width"
+                    app:boxStrokeWidthFocused="@dimen/input_stroke_width_focused"
+                    app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/manualPalletSizeInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:minHeight="@dimen/input_min_height"
+                        android:maxLines="1"
+                        android:hint="@string/hint_manual_pallet_size"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789,."
+                        android:imeOptions="actionNext"
+                        android:nextFocusForward="@id/palletHeightInput" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@string/pallet_height"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_secondary" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    app:boxBackgroundColor="@color/surface_light"
+                    app:boxStrokeColor="@color/accent"
+                    app:boxStrokeWidth="@dimen/card_stroke_width"
+                    app:boxStrokeWidthFocused="@dimen/input_stroke_width_focused"
+                    app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/palletHeightInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:minHeight="@dimen/input_min_height"
+                        android:maxLines="1"
+                        android:hint="@string/hint_pallet_height"
+                        android:text="@string/default_pallet_height"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789,."
+                        android:imeOptions="actionNext"
+                        android:nextFocusForward="@id/separatorInput" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/separator_width"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_secondary" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    app:boxBackgroundColor="@color/surface_light"
+                    app:boxStrokeColor="@color/accent"
+                    app:boxStrokeWidth="@dimen/card_stroke_width"
+                    app:boxStrokeWidthFocused="@dimen/input_stroke_width_focused"
+                    app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/separatorInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:minHeight="@dimen/input_min_height"
+                        android:maxLines="1"
+                        android:hint="@string/hint_separator"
+                        android:text="@string/default_separator"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789,."
+                        android:imeOptions="actionNext"
+                        android:nextFocusForward="@id/maxPalletWeightInput" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@string/max_pallet_weight"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_secondary" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundColor="@color/surface_light"
+                    app:boxStrokeColor="@color/accent"
+                    app:boxStrokeWidth="@dimen/card_stroke_width"
+                    app:boxStrokeWidthFocused="@dimen/input_stroke_width_focused"
+                    app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/maxPalletWeightInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:minHeight="@dimen/input_min_height"
+                        android:maxLines="1"
+                        android:hint="@string/hint_max_pallet_weight"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789,."
+                        android:imeOptions="actionNext"
+                        android:nextFocusForward="@id/targetWeightInput" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@string/customer_target_weight"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="@dimen/spacing_medium" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundColor="@color/surface_light"
+                    app:boxStrokeColor="@color/accent"
+                    app:boxStrokeWidth="@dimen/card_stroke_width"
+                    app:boxStrokeWidthFocused="@dimen/input_stroke_width_focused"
+                    app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/targetWeightInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:minHeight="@dimen/input_min_height"
+                        android:maxLines="1"
+                        android:hint="@string/hint_customer_target_weight"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789,."
+                        android:imeOptions="actionNext"
+                        android:nextFocusForward="@id/radialThicknessInput" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/coilCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_large"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:strokeColor="@color/primary"
+            app:strokeWidth="@dimen/card_stroke_width"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_large">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/params_coil"
+                    android:textAppearance="@style/TextAppearance.App.Title"
+                    android:textColor="@color/accent"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/spacing_medium" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/coil_radial_thickness"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_secondary" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    app:boxBackgroundColor="@color/surface_light"
+                    app:boxStrokeColor="@color/accent"
+                    app:boxStrokeWidth="@dimen/card_stroke_width"
+                    app:boxStrokeWidthFocused="@dimen/input_stroke_width_focused"
+                    app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/radialThicknessInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:minHeight="@dimen/input_min_height"
+                        android:maxLines="1"
+                        android:hint="@string/hint_radial_thickness"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789,."
+                        android:imeOptions="actionNext"
+                        android:nextFocusForward="@id/coreDiameterInput" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/coil_core_diameter"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_secondary" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    app:boxBackgroundColor="@color/surface_light"
+                    app:boxStrokeColor="@color/accent"
+                    app:boxStrokeWidth="@dimen/card_stroke_width"
+                    app:boxStrokeWidthFocused="@dimen/input_stroke_width_focused"
+                    app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/coreDiameterInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:minHeight="@dimen/input_min_height"
+                        android:maxLines="1"
+                        android:hint="@string/hint_core_diameter"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789,."
+                        android:imeOptions="actionNext"
+                        android:nextFocusForward="@id/materialThicknessInput" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/material_thickness"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_secondary" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    app:boxBackgroundColor="@color/surface_light"
+                    app:boxStrokeColor="@color/accent"
+                    app:boxStrokeWidth="@dimen/card_stroke_width"
+                    app:boxStrokeWidthFocused="@dimen/input_stroke_width_focused"
+                    app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/materialThicknessInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:minHeight="@dimen/input_min_height"
+                        android:maxLines="1"
+                        android:hint="@string/hint_material_thickness"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789,."
+                        android:imeOptions="actionNext"
+                        android:nextFocusForward="@id/stripWidthInput" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/strip_width"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_secondary" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    app:boxBackgroundColor="@color/surface_light"
+                    app:boxStrokeColor="@color/accent"
+                    app:boxStrokeWidth="@dimen/card_stroke_width"
+                    app:boxStrokeWidthFocused="@dimen/input_stroke_width_focused"
+                    app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/stripWidthInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:minHeight="@dimen/input_min_height"
+                        android:maxLines="1"
+                        android:hint="@string/hint_strip_width"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789,."
+                        android:imeOptions="actionNext"
+                        android:nextFocusForward="@id/coilCountInput" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/material_label"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_secondary" />
+
+                <Spinner
+                    android:id="@+id/materialSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/input_min_height"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:backgroundTint="@color/surface_light"
+                    android:popupBackground="@color/surface_light" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/coil_count"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_secondary" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundColor="@color/surface_light"
+                    app:boxStrokeColor="@color/accent"
+                    app:boxStrokeWidth="@dimen/card_stroke_width"
+                    app:boxStrokeWidthFocused="@dimen/input_stroke_width_focused"
+                    app:boxBackgroundMode="outline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/coilCountInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:minHeight="@dimen/input_min_height"
+                        android:maxLines="1"
+                        android:hint="@string/hint_coil_count"
+                        android:text="@string/default_coil_count"
+                        android:inputType="number"
+                        android:digits="0123456789"
+                        android:imeOptions="actionDone" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addEntryButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:minHeight="@dimen/button_min_height"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:text="@string/add_entry"
+            android:textAppearance="@style/TextAppearance.App.Button"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/card_corner_radius"
+            app:backgroundTint="@color/accent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/calculateButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:minHeight="@dimen/button_min_height"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:text="@string/calculate"
+            android:textAppearance="@style/TextAppearance.App.Button"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/card_corner_radius"
+            app:backgroundTint="@color/primary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/resetButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:minHeight="@dimen/button_min_height"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:text="@string/new_order"
+            android:textAppearance="@style/TextAppearance.App.Button"
+            android:textColor="@color/text_secondary"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/card_corner_radius"
+            app:backgroundTint="@color/surface_light" />
+
+        <TextView
+            android:id="@+id/messageLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/text_secondary"
+            android:textAppearance="@style/TextAppearance.App.Body"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/entriesHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/accent"
+            android:textAppearance="@style/TextAppearance.App.Label"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/entriesContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/spacing_medium" />
+
+        <TextView
+            android:id="@+id/resultsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/accent"
+            android:textAppearance="@style/TextAppearance.App.Label"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/resultsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </LinearLayout>
+</ScrollView>

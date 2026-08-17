@@ -1,0 +1,10 @@
+<resources>
+    <string-array name="pallet_sizes">
+        <item>75</item>
+        <item>83</item>
+        <item>90</item>
+        <item>95</item>
+        <item>98</item>
+        <item>105</item>
+    </string-array>
+</resources>

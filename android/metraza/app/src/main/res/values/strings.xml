@@ -1,0 +1,18 @@
+﻿<resources>
+    <string name="app_name">Metraza</string>
+    <string name="title">Računanje metara</string>
+    <string name="params">PARAMETRI</string>
+    <string name="results">REZULTATI</string>
+    <string name="material">Materijal</string>
+    <string name="select_material">Izaberite materijal</string>
+    <string name="total_weight">Ukupna težina (kg)</string>
+    <string name="thickness">Debljina (mm)</string>
+    <string name="cut_width">Širina rezanja (mm)</string>
+    <string name="rolls">Broj rezova</string>
+    <string name="calculate">IZRAČUNAJ</string>
+    <string name="hint_weight">npr. 1500</string>
+    <string name="hint_thickness">npr. 1.5</string>
+    <string name="hint_cut_width">npr. 72</string>
+    <string name="hint_rolls">npr. 6</string>
+    <string name="results_hint">Unesite parametre i pritisnite "IZRAČUNAJ" za prikaz rezultata.</string>
+</resources>

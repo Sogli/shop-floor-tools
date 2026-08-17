@@ -1,0 +1,23 @@
+# GSD Planning (local only)
+.planning/
+
+# Android/Gradle
+.gradle/
+build/
+local.properties
+*.iml
+.idea/
+.DS_Store
+captures/
+.externalNativeBuild
+.cxx
+*.apk
+*.ap_
+*.aab
+
+# Keystore
+*.jks
+*.keystore
+
+# AI assistant artifacts
+context-snapshot.json

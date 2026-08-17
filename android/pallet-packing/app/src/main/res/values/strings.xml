@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Pakovanje</string>
+    <string name="title">Kalkulator pakovanja</string>
+    <string name="params">UNOS PODATAKA</string>
+    <string name="pallet_size">Dimenzija palete (cm)</string>
+    <string name="pallet_height">Visina palete (od zemlje do vrha daske) (mm)</string>
+    <string name="quantity">Kolicina (kom)</string>
+    <string name="coil_width">Sirina kotura (mm)</string>
+    <string name="separator_width">Sirina separatora (mm)</string>
+    <string name="calculate">IZRACUNAJ PLAN</string>
+    <string name="hint_quantity">npr. 50</string>
+    <string name="hint_pallet_height">npr. 144</string>
+    <string name="hint_coil_width">npr. 56.5</string>
+    <string name="hint_separator">npr. 20</string>
+    <string name="default_separator">20</string>
+    <string name="default_pallet_height">144</string>
+    <string name="result_header_format">Rezultat: %1$d kom | Max po stogu: %2$d</string>
+    <string name="pallet_title_format">Paleta #%1$d</string>
+    <string name="pallet_badge_format">%1$d kom</string>
+    <string name="pallet_height_format">Ukupna visina (sa paletom): %1$s mm</string>
+</resources>
