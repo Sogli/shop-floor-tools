@@ -18,39 +18,41 @@ Repozitorijum ne sadrži proizvodne zapise, podatke o zaposlenima, dokumenta fir
 
 | Program | Čemu služi |
 |---|---|
-| `python/cutting-optimizer` | Optimizuje podešavanje rezanja i uzdužnog sečenja trake tako što bira raspored noževa i odstojnika uz poštovanje raspoloživog alata. |
+| `python/cutting-optimizer` | Široka traka se seče na više užih. Program smisli kako da se noževi na mašini rasporede, da bi se dobile tražene trake uz što manje otpada. |
 
 ### Android
 
 | Program | Čemu služi |
 |---|---|
-| `android/metraza` | Računa dužinu i metražu koluta iz dimenzija i materijala. |
-| `android/kilaza` | Pretvara dimenzije koluta u masu i grupiše ih po porudžbinama. |
-| `android/coil-diameter` | Procenjuje spoljni prečnik koluta iz unutrašnjeg prečnika, dužine i debljine. |
-| `android/pallet-packing` | Raspoređuje kolutove po paletama po zadatom broju komada. |
-| `android/pallet-weight-packing` | Pakuje palete do ciljne mase, uz različite materijale i gustine. |
-| `android/equipment-tracking` | Vodi evidenciju zaduženog alata i opreme: rokovi, istorija i dostupnost. |
-| `android/livnica-shifts` | Rani prototip za smene, praznike i obračun zarade (istorijski, prethodnik projekta `shift-payroll-android`). |
+| `android/metraza` | Kaže koliko metara materijala ima u kolutu. |
+| `android/kilaza` | Kaže koliko kilograma je kolut i sabira težine po porudžbini. |
+| `android/coil-diameter` | Kaže koliko će kolut biti širok spolja kada se namota. |
+| `android/pallet-packing` | Raspoređuje kolutove po paletama, po broju komada. |
+| `android/pallet-weight-packing` | Slaže kolutove na palete tako da svaka paleta ima željenu težinu. |
+| `android/equipment-tracking` | Vodi evidenciju ko je šta zadužio i do kada treba da vrati. |
 
 ## Izdvojeni projekat: optimizator rezanja
 
-`python/cutting-optimizer/m39.py` je terminalna aplikacija za optimizaciju podešavanja rezanja i uzdužnog sečenja.
+Kada treba iseći široku traku na više užih, neko mora da odluči koji noževi idu na mašinu i kojim redom. Ranije se to radilo na papiru, probom i greškom. Ovaj program to odluči umesto čoveka.
 
-- Modeluje ograničenja zaliha noževa, odstojnika, osovina i guma.
-- Koristi mešovito celobrojno linearno programiranje kroz PuLP i HiGHS.
-- Traži rezervne strategije uz očuvanje konzistentnosti zaliha.
-- Koristi `Decimal` kvantizaciju za fizičke dimenzije.
-- Razbija simetrične prostore rešenja da bi skratio rad solvera; referentni scenario je pao sa oko 39 na oko 21 sekundu bez promene izabranog podešavanja.
-- Ispisuje objašnjenje na srpskom, razumljivo operateru: izabrani raspored, rezervne varijante i korekcije balansa.
+Kako radi:
+
+- Uneseš koje trake ti trebaju i koji alat imaš u magacinu.
+- Program proveri da li je unos moguć i uskladi mere.
+- Isproba ogroman broj kombinacija i izabere najbolju.
+- Proveri da li se izabrani raspored zaista može složiti na mašini.
+- Ako baš ta kombinacija ne može, ponudi rezervnu varijantu.
+- Na kraju ispiše na srpskom, običnim rečima, šta operater treba da stavi na mašinu.
+
+Bitno je da raspored bude i uravnotežen, jer neuravnotežen alat trese mašinu. Program to uzima u obzir. Traženje najbolje kombinacije je isprva trajalo oko 39 sekundi, a posle doterivanja oko 21 sekundu, uz isti rezultat.
 
 ```mermaid
 flowchart LR
-    A["Dimenzije i raspoloživ alat"] --> B["Validacija i kvantizacija"]
-    B --> C["Izgradnja MILP modela"]
-    C --> D["HiGHS solver"]
-    D --> E["Provera fizičke izvodljivosti"]
-    E --> F["Balansiran raspored rezanja"]
-    F --> G["Rezultat čitljiv operateru"]
+    A["Trake koje trebaju i alat u magacinu"] --> B["Provera unosa"]
+    B --> C["Traženje najbolje kombinacije"]
+    C --> D["Provera da li može na mašini"]
+    D --> E["Uravnotežen raspored noževa"]
+    E --> F["Uputstvo za operatera"]
 ```
 
 Pokretanje:
@@ -96,39 +98,41 @@ No production records, employee data, company documents, credentials or signing 
 
 | Program | What it does |
 |---|---|
-| `python/cutting-optimizer` | Optimizes cutting and slitting setups by picking the knife and spacer arrangement that fits the available tooling. |
+| `python/cutting-optimizer` | A wide strip gets cut into several narrower ones. The program works out how to arrange the knives on the machine so you get the strips you need with as little waste as possible. |
 
 ### Android
 
 | Program | What it does |
 |---|---|
-| `android/metraza` | Calculates coil length and running metres from dimensions and material. |
-| `android/kilaza` | Converts coil dimensions into mass and groups them by order. |
-| `android/coil-diameter` | Estimates external coil diameter from inner diameter, length and thickness. |
-| `android/pallet-packing` | Distributes coils across pallets by piece count. |
-| `android/pallet-weight-packing` | Packs pallets to a target mass across materials with different densities. |
-| `android/equipment-tracking` | Tracks issued tools and equipment: deadlines, history and availability. |
-| `android/livnica-shifts` | Early prototype for shift cycles, holidays and pay calculation (historical predecessor of `shift-payroll-android`). |
+| `android/metraza` | Tells you how many metres of material are in a coil. |
+| `android/kilaza` | Tells you how many kilograms a coil weighs and adds up the weight per order. |
+| `android/coil-diameter` | Tells you how wide a coil will be on the outside once it is wound. |
+| `android/pallet-packing` | Spreads coils across pallets by piece count. |
+| `android/pallet-weight-packing` | Stacks coils onto pallets so each pallet hits the weight you want. |
+| `android/equipment-tracking` | Keeps track of who took which tool and when it is due back. |
 
 ## Featured project: cutting setup optimizer
 
-`python/cutting-optimizer/m39.py` is a terminal application for cutting and slitting setup optimization.
+When a wide strip has to be cut into several narrower ones, someone has to decide which knives go on the machine and in what order. That used to be done on paper, by trial and error. This program makes the decision instead.
 
-- Models knife, spacer, axle and tire inventory constraints.
-- Uses mixed-integer linear programming through PuLP and HiGHS.
-- Searches fallback strategies while preserving inventory consistency.
-- Uses Decimal-based quantization for physical dimensions.
-- Breaks symmetric solution spaces to reduce solver time; a reference scenario improved from about 39 seconds to about 21 seconds without changing the selected setup.
-- Produces a Serbian operator-facing explanation of the selected arrangement, fallbacks and balance offsets.
+How it works:
+
+- You enter the strips you need and the tooling you have in stock.
+- The program checks the input is possible and lines up the measurements.
+- It tries a huge number of combinations and picks the best one.
+- It checks the chosen arrangement can actually be assembled on the machine.
+- If that exact combination will not work, it offers a fallback.
+- Finally it prints, in plain Serbian, what the operator should put on the machine.
+
+The arrangement also has to be balanced, because unbalanced tooling makes the machine shake. The program accounts for that. Finding the best combination first took about 39 seconds, and after some tuning about 21 seconds, with the same result.
 
 ```mermaid
 flowchart LR
-    A["Dimensions and available inventory"] --> B["Validation and quantization"]
-    B --> C["MILP model builder"]
-    C --> D["HiGHS solver"]
-    D --> E["Physical feasibility checks"]
-    E --> F["Balanced cutting arrangement"]
-    F --> G["Operator-readable result"]
+    A["Strips needed and tooling in stock"] --> B["Input checks"]
+    B --> C["Search for the best combination"]
+    C --> D["Check it fits the machine"]
+    D --> E["Balanced knife arrangement"]
+    E --> F["Instructions for the operator"]
 ```
 
 Run it with:
