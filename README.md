@@ -44,14 +44,14 @@ Kako radi:
 - Ako baš ta kombinacija ne može, ponudi rezervnu varijantu.
 - Na kraju ispiše na srpskom, običnim rečima, šta operater treba da stavi na mašinu.
 
-Bitno je da raspored bude i uravnotežen, jer neuravnotežen alat trese mašinu. Program to uzima u obzir. Traženje najbolje kombinacije je isprva trajalo oko 39 sekundi, a posle doterivanja oko 21 sekundu, uz isti rezultat.
+Traženje najbolje kombinacije je isprva trajalo oko 39 sekundi, a posle doterivanja oko 21 sekundu, uz isti rezultat.
 
 ```mermaid
 flowchart LR
     A["Trake koje trebaju i alat u magacinu"] --> B["Provera unosa"]
     B --> C["Traženje najbolje kombinacije"]
     C --> D["Provera da li može na mašini"]
-    D --> E["Uravnotežen raspored noževa"]
+    D --> E["Raspored noževa"]
     E --> F["Uputstvo za operatera"]
 ```
 
@@ -114,14 +114,14 @@ How it works:
 - If that exact combination will not work, it offers a fallback.
 - Finally it prints, in plain Serbian, what the operator should put on the machine.
 
-The arrangement also has to be balanced, because unbalanced tooling makes the machine shake. The program accounts for that. Finding the best combination first took about 39 seconds, and after some tuning about 21 seconds, with the same result.
+Finding the best combination first took about 39 seconds, and after some tuning about 21 seconds, with the same result.
 
 ```mermaid
 flowchart LR
     A["Strips needed and tooling in stock"] --> B["Input checks"]
     B --> C["Search for the best combination"]
     C --> D["Check it fits the machine"]
-    D --> E["Balanced knife arrangement"]
+    D --> E["Knife arrangement"]
     E --> F["Instructions for the operator"]
 ```
 
